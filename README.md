@@ -168,12 +168,11 @@ This task is achieved by the function `find_lane_pixels()`. It takes the `warped
 	* The noise nearby the lane pixels is less
 	* The lane is not excessively curved, atleast in the bottom half portion of the bird-eye's view. This would not work well in case of steep curvatures as the function takes the mean of x coordinates of the lane pixels. In this case, the mean might not lie at the bottom of the lane.
 	
-	
-		><img src="examples/histogram.JPG" width="350">
+	><img src="examples/histogram.JPG" width="350">
 	
 2.  Sliding windows: We try to capture the lane within boxes of certain dimensions. We first create a box at the bottom and find the activated pixels in it. Using the average x coordinate of the pixels in that box, we shift next box (just upwards of the current one) to the left or right. 
 	 
-		><img src="examples/finding lane pixels.JPG" width="350"> 
+	><img src="examples/finding lane pixels.JPG" width="350"> 
 	
 	Steps: 
 	* We define the size of the sliding windows
