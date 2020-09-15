@@ -72,11 +72,13 @@ ___
 _Task 1: Extract yellow color using H channel
 Task 2: Choose optimium values for the S channel & use in combo with x_gradient_
 
->Reason for using HSL color space:
+Reason for using HSL color space:
+
 |RGB color space|HSL color space|
 |:----:|:----:|
 |<img src="examples/RGB.JPG" width="350">|<img src="examples/HLS.JPG" width="350">|
-_Note: If we use H and S channel only, and discard the information in the L channel, we should be able to detect different colors of lane lines (more reliably in RGB color space). We just need to carefully choose H and S values that distinctly identify our lane lines with least possible noise. Hue is the actual color and Saturation indicates how pure a color is._ 
+
+>_Note: If we use H and S channel only, and discard the information in the L channel, we should be able to detect different colors of lane lines (more reliably in RGB color space). We just need to carefully choose H and S values that distinctly identify our lane lines with least possible noise. Hue is the actual color and Saturation indicates how pure a color is._ 
  
 I started by analysing the RGB values at the yellow lanes present in the given frames. For that, I first plotted the test images & used `%matplotlib notebook` command to navigate across the image to read the RGB values. Then I used a [color space conversion website](http://colorizer.org/) to study the HSL values for all the RGB values. 
 
@@ -166,11 +168,12 @@ This task is achieved by the function `find_lane_pixels()`. It takes the `warped
 	* The noise nearby the lane pixels is less
 	* The lane is not excessively curved, atleast in the bottom half portion of the bird-eye's view. This would not work well in case of steep curvatures as the function takes the mean of x coordinates of the lane pixels. In this case, the mean might not lie at the bottom of the lane.
 	
-	><img src="examples/histogram.JPG" width="350">
+	
+		><img src="examples/histogram.JPG" width="350">
 	
 2.  Sliding windows: We try to capture the lane within boxes of certain dimensions. We first create a box at the bottom and find the activated pixels in it. Using the average x coordinate of the pixels in that box, we shift next box (just upwards of the current one) to the left or right. 
 	 
-	><img src="examples/finding lane pixels.JPG" width="350"> 
+		><img src="examples/finding lane pixels.JPG" width="350"> 
 	
 	Steps: 
 	* We define the size of the sliding windows
@@ -446,7 +449,7 @@ a) We begin by un-warping the our bird eye's view image using the `rev_perspecti
 b) Then for each lane, we rearrange the x and y coordinates in a cyclic format so that they can be used to draw a polygon.  
 * We Stack the points on the left lane from top to bottom
 	 ```python
-	 `pts_left = np.array([np.transpose(np.vstack([left_fitx, ploty]))])
+	 pts_left = np.array([np.transpose(np.vstack([left_fitx, ploty]))])
 	 ````
 * Then we stack the points on the right lane from bottom to top (in the reverse order of their default arrangement)  
 	```python
